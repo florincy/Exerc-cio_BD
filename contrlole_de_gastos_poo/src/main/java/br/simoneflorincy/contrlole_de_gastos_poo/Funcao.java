@@ -19,19 +19,7 @@ import javax.persistence.Table;
 @Table(name = "funcao")
 public class Funcao implements Serializable {
 
-    /**
-     * @return the tp_visivel
-     */
-    public char getTp_visivel() {
-        return tp_visivel;
-    }
-
-    /**
-     * @param tp_visivel the tp_visivel to set
-     */
-    public void setTp_visivel(char tp_visivel) {
-        this.tp_visivel = tp_visivel;
-    }
+   
 
     /**
      * @return the cdFuncao
@@ -50,14 +38,14 @@ public class Funcao implements Serializable {
     /**
      * @return the acessoRestrito
      */
-    public boolean isAcessoRestrito() {
+    public char isAcessoRestrito() {
         return acessoRestrito;
     }
 
     /**
      * @param acessoRestrito the acessoRestrito to set
      */
-    public void setAcessoRestrito(boolean acessoRestrito) {
+    public void setAcessoRestrito(char acessoRestrito) {
         this.acessoRestrito = acessoRestrito;
     }
 
@@ -80,10 +68,10 @@ public class Funcao implements Serializable {
   tp_visivel character(1),
   CONSTRAINT pk_funcao PRIMARY KEY (cd_funcao)
      */
-    @Column
-    private char tp_visivel;
+ 
     //Dúvida: tp_visivel corresponde à acessoRestrito
-    private boolean acessoRestrito;
+    @Column(name = "tp_visivel")
+    private char acessoRestrito;
     @Column(name = "ds_funcao")
     private String descricao;
     @Column(name = "cd_funcao")
