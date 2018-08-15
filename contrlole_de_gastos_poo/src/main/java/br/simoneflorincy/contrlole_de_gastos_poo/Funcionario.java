@@ -5,11 +5,47 @@
  */
 package br.simoneflorincy.contrlole_de_gastos_poo;
 
-/**
- *
- * @author User
- */
-public class Funcionario {
+import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "funcionario")
+public class Funcionario implements Serializable {
+
+    /**
+     * @return the tpVisivel
+     */
+    public char getTpVisivel() {
+        return tpVisivel;
+    }
+
+    /**
+     * @param tpVisivel the tpVisivel to set
+     */
+    public void setTpVisivel(char tpVisivel) {
+        this.tpVisivel = tpVisivel;
+    }
+
+    /**
+     * @return the cdFuncionario
+     */
+    public Integer getCdFuncionario() {
+        return cdFuncionario;
+    }
+
+    /**
+     * @param cdFuncionario the cdFuncionario to set
+     */
+    public void setCdFuncionario(Integer cdFuncionario) {
+        this.cdFuncionario = cdFuncionario;
+    }
 
     /**
      * @return the nick
@@ -80,10 +116,22 @@ public class Funcionario {
     public void setEndereco_do_funcionario(Endereco endereco_do_funcionario) {
         this.endereco_do_funcionario = endereco_do_funcionario;
     }
+    @Column
     private String nick;
+    @Column(name = "nm_funcionario")
     private String nome;
+    @Column(name = "ds_senha")
     private String senha;
+    @Column(name = "funcao_cd_funcao")
+    @OneToMany(fetch = FetchType.EAGER)
     private Funcao funcao_do_funcionario;
+    @Column(name = "endereco_cd_endereco")
+    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private Endereco endereco_do_funcionario;
-    
+    @Column(name = "cd_funcionario")
+    @Id
+    private Integer cdFuncionario;
+    @Column(name = "tp_invisivel")
+    private char tpVisivel;
+
 }
