@@ -5,11 +5,31 @@
  */
 package br.simoneflorincy.contrlole_de_gastos_poo;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author User
  */
-public class Endereco {
+@Entity
+public class Endereco implements Serializable {
+
+    /**
+     * @return the cdEndereco
+     */
+    public Integer getCdEndereco() {
+        return cdEndereco;
+    }
+
+    /**
+     * @param cdEndereco the cdEndereco to set
+     */
+    public void setCdEndereco(Integer cdEndereco) {
+        this.cdEndereco = cdEndereco;
+    }
 
     /**
      * @return the bairro
@@ -70,14 +90,14 @@ public class Endereco {
     /**
      * @return the numero
      */
-    public String getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
     /**
      * @param numero the numero to set
      */
-    public void setNumero(String numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
 
@@ -98,36 +118,59 @@ public class Endereco {
     /**
      * @return the telefone1
      */
-    public String getTelefone1() {
+    public Integer getTelefone1() {
         return telefone1;
     }
 
     /**
      * @param telefone1 the telefone1 to set
      */
-    public void setTelefone1(String telefone1) {
+    public void setTelefone1(Integer telefone1) {
         this.telefone1 = telefone1;
     }
 
     /**
      * @return the telefone2
      */
-    public String getTelefone2() {
+    public Integer getTelefone2() {
         return telefone2;
     }
 
     /**
      * @param telefone2 the telefone2 to set
      */
-    public void setTelefone2(String telefone2) {
+    public void setTelefone2(Integer telefone2) {
         this.telefone2 = telefone2;
     }
+    /*
+    cd_endereco integer NOT NULL,
+  nm_rua character varying(25),
+  nr_casa numeric(10,0),
+  ds_complemento text,
+  nm_bairro character varying(25),
+  nm_cidade character varying(25),
+  ds_cep character(8),
+  telefone1 numeric(13,0),
+  telefone2 numeric(13,0),
+  CONSTRAINT pk_endereco PRIMARY KEY (cd_endereco)
+    */
+    @Column(name = "nm_bairro")
     private String bairro;
+    @Column(name = "ds_cep")
     private String cep;
+    @Column(name = "nm_cidade")
     private String cidade;
+    @Column(name = "ds_complemento")
     private String complemento;
-    private String numero;
+    @Column(name = "nr_casa")
+    private Integer numero;
+    @Column(name = "nm_rua")
     private String rua;
-    private String telefone1;
-    private String telefone2;
+    @Column
+    private Integer telefone1;
+    @Column
+    private Integer telefone2;
+    @Column(name = "cd_endereco")
+    @Id
+    private Integer cdEndereco;
 }
