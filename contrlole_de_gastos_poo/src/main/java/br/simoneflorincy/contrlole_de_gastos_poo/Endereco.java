@@ -9,12 +9,14 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author User
  */
 @Entity
+@Table(name = "endereco")
 public class Endereco implements Serializable {
 
     /**
@@ -153,7 +155,7 @@ public class Endereco implements Serializable {
   telefone1 numeric(13,0),
   telefone2 numeric(13,0),
   CONSTRAINT pk_endereco PRIMARY KEY (cd_endereco)
-    */
+     */
     @Column(name = "nm_bairro")
     private String bairro;
     @Column(name = "ds_cep")
